@@ -11,6 +11,10 @@
   box-sizing: inherit;
 }
 
+.hidden {
+  display: none;
+}
+
 body {
   background-color: var(--brand-3);
   padding: 0;
@@ -28,12 +32,34 @@ body {
   border: 5px solid var(--brand-2);
 }
 
-.nav-bar > ul > li:first-child {
+.nav-bar > ul > li + li {
+  border-left: none;
+  display: none;
+}
+
+.nav-bar .title {
   align-self: flex-start;
   flex-grow: 1;
 }
+.nav-bar .title > a {
+  text-align: left;
+}
 
-.nav-bar > ul > li > a {
+.open-nav {
+  display: initial !important;
+}
+
+@media screen and (min-width: 1024px) {
+  .nav-bar > ul > li + li {
+    border-left: none;
+    display: initial;
+  }
+  .open-nav {
+    display: none;
+  }
+}
+
+a {
   text-decoration: none;
   padding: 1em 1.5em;
   display: block;
@@ -42,30 +68,139 @@ body {
   font-weight: bold;
   text-align: center;
   font-size: 1.4em;
+  cursor: pointer;
 }
 
-.nav-bar > ul > li + li {
-  border-left: none;
-}
-
-.nav-bar > ul > li:first-child > a {
-  align-self: flex-start;
-  flex-grow: 1;
-  text-align: left;
-}
-
-.nav-bar > ul > li > a:link,
+a:link,
 a:visited,
-a:hover,
 a:active {
   color: var(--brand-1);
 }
-.nav-bar > ul > li > a:hover {
+a:hover {
   background-color: var(--brand-3);
 }
 
+
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 80%);
+  /* display: none; */
+}
+
+.mobile-nav > ul {
+  background-color: var(--brand-2);
+  position: absolute;
+  top: 1em;
+  bottom: 1em;
+  left: 1em;
+  right: 1em;
+}
+.mobile-nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.close-nav {
+  position: absolute;
+  top:0;
+  right: 0;
+}
+
+main {
+  padding: 0 2em;
+}
+
 .bed-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
-    grid-auto-rows: 1fr;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1em;
+}
+
+.card {
+  background-color: var(--brand-2);
+  /* padding-bottom: 0.5em; */
+}
+
+.card > h3{
+  background-color: var(--brand-1);
+  color: var(--brand-3);
+  margin-top: 0;
+  padding:0.5em;
+}
+
+.card > p {
+  margin: 0.5em;
+  font-weight: bold;
+}
+.card > button {
+  background-color: var(--brand-1);
+  color: var(--brand-3);
+  padding: 0.8em 1.5em;
+  margin: 1em auto;
+  font-weight: bold;
+  border: none;
+  display: block;
+  cursor: pointer;
+}
+
+#user-table {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+#user-table td {
+  padding: 0.5em;
+  /* cursor: pointer; */
+}
+
+#user-table > tbody > tr > td {
+  background-color: var(--brand-1);
+  color: var(--brand-3);
+}
+#user-table > tbody > tr > td:first-child {
+  background-color: var(--brand-2);
+  color: var(--brand-1);
+}
+
+#user-table > thead > tr {
+  background-color: var(--brand-3) !important;
+}
+
+#reservation-table {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.2em;
+  /* overflow: hidden; */
+  
+}
+#reservation-table td {
+  padding: 0.5em;
+  
+}
+
+#reservation-table > thead > tr{
+  background-color: var(--brand-2);
+  color: var(--brand-1);
+}
+
+#reservation-table > tbody > tr:nth-child(odd){
+  background-color: var(--brand-1);
+  color: var(--brand-3);
+}
+
+#reservation-table > tbody > tr:nth-child(even){
+  background-color: var(--brand-2);
+  color: var(--brand-1);
+}
+
+#reservation-table a{
+  background-color: inherit;
+  color: inherit;
+  padding: inherit;
 }
