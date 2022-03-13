@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="scripts.js"></script>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="/static/scripts.js"></script>
   </head>
   <body>
     <nav class="nav-bar">
@@ -29,52 +29,38 @@
     </div>
     <main>
       <h1>Foglalások</h1>
-      <table id="reservation-table">
-        <thead>
-          <tr>
-            <td>Szoba</td>
-            <td>Ágy</td>
-            <td>Foglaló</td>
-            <td>Foglalás kezdete</td>
-            <td>Foglalás vége</td>
-            <td></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1316</td>
-            <td>bal alsó</td>
-            <td>Fogadó Ferenc</td>
-            <td>2022.02.27 - 20:00</td>
-            <td>2022.02.28 - 8:00</td>
-            <td><a href="/reservation/1">Részletek</a></td>
-          </tr>
-          <tr>
-            <td>1316</td>
-            <td>bal alsó</td>
-            <td>Fogadó Ferenc</td>
-            <td>2022.02.27 - 20:00</td>
-            <td>2022.02.28 - 8:00</td>
-            <td><a href="/reservation/2">Részletek</a></td>
-          </tr>
-          <tr>
-            <td>1316</td>
-            <td>bal alsó</td>
-            <td>Fogadó Ferenc</td>
-            <td>2022.02.27 - 20:00</td>
-            <td>2022.02.28 - 8:00</td>
-            <td><a href="/reservation/3">Részletek</a></td>
-          </tr>
-          <tr>
-            <td>1316</td>
-            <td>bal alsó</td>
-            <td>Fogadó Ferenc</td>
-            <td>2022.02.27 - 20:00</td>
-            <td>2022.02.28 - 8:00</td>
-            <td><a href="/reservation/4">Részletek</a></td>
-          </tr>
-        </tbody>
-      </table>
+      <div id="reservation-table-wrap">
+        <table id="reservation-table">
+          <thead>
+            <tr>
+              <td>Szoba</td>
+              <td>Ágy</td>
+              <td>Foglaló</td>
+              <td>Foglalás kezdete</td>
+              <td>Foglalás vége</td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1316</td>
+              <td>bal alsó</td>
+              <td>Fogaló Félix</td>
+              <td>2022.02.27 - 20:00</td>
+              <td>2022.02.28 - 8:00</td>
+              <td><a href="/reservation/3">Részletek</a></td>
+            </tr>
+            <tr>
+              <td>1314</td>
+              <td>jobb alsó</td>
+              <td>Vendég Vikror</td>
+              <td>2022.02.28 - 23:59</td>
+              <td>2022.02.29 - 12:00</td>
+              <td><a href="/reservation/4">Részletek</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
   </body>
 </html>

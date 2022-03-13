@@ -28,12 +28,7 @@ body {
   margin: 0;
 }
 
-.nav-bar > ul > li {
-  border: 5px solid var(--brand-2);
-}
-
 .nav-bar > ul > li + li {
-  border-left: none;
   display: none;
 }
 
@@ -205,13 +200,18 @@ main {
   padding: inherit;
 }
 
+#reservation-table-wrap {
+  overflow: auto;
+}
+
 #reservation-edit-table {
   width: 100%;
   font-weight: bold;
   font-size: 1.2em;
-  /* overflow: hidden; */
   
 }
+
+
 #reservation-edit-table td {
   padding: 0.5em;
 }
