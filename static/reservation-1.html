@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js"></script>
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <ul>
+        <li class="title"><a href="/">AlváSCH</a></li>
+        <li><a href="/bed">Ágyak</a></li>
+        <li><a href="/reservation">Foglalások</a></li>
+        <li><a href="/user">Felhasználók</a></li>
+        <li class="open-nav"><a id="open-nav-btn">☰</a></li>
+      </ul>
+    </nav>
+    <div class="mobile-nav hidden" id="mobile-nav">
+      <ul>
+        <li><a href="/">AlváSCH</a></li>
+        <li><a href="/bed">Ágyak</a></li>
+        <li><a href="/reservation">Foglalások</a></li>
+        <li><a href="/user">Felhasználók</a></li>
+        <li class="close-nav"><a id="close-nav-btn">X</a></li>
+      </ul>
+    </div>
+    <main>
+      <h1>Foglalás</h1>
+      <form action="/reservation">
+      <table id="reservation-edit-table">
+        <tbody>
+          <tr>
+            <td>Szoba</td>
+            <td>1316</td>
+          </tr>
+          <tr>
+            <td>Ágy</td>
+            <td>bal alsó</td>
+          </tr>
+          <tr>
+            <td><label for="user">Tulajdonos</label></td>
+            <td>
+              <select name="user" id="user">
+                <option value="volvo">Foglaló Félix</option>
+                <option value="saab">Bérlő Béla</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="start">Foglalás kezdete</label>
+            </td>
+            <td><input name="start" id="start" type="datetime-local" /></td>
+          </tr>
+          <tr>
+            <td><label for="end">Foglalás vége</label></td>
+            <td><input name="end" id="end" type="datetime-local" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <input id="reservation-submit" type="submit" value="Foglalás">
+    </form>
+    </main>
+  </body>
+</html>

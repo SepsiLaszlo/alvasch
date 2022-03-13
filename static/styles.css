@@ -204,3 +204,24 @@ main {
   color: inherit;
   padding: inherit;
 }
+
+#reservation-edit-table {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.2em;
+  /* overflow: hidden; */
+  
+}
+#reservation-edit-table td {
+  padding: 0.5em;
+}
+
+#reservation-submit {
+  background-color: var(--brand-1);
+  color: var(--brand-3);
+  font-size: 1.5em;
+  padding: 0.5em;
+  border: none;
+  margin: 1em auto;
+  display: block;
+}
