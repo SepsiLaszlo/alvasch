@@ -160,7 +160,7 @@ main {
   margin: 0.5em;
   font-weight: bold;
 }
-.card > button {
+.card > a {
   background-color: var(--brand-1);
   color: var(--brand-3);
   padding: 0.8em 1.5em;
@@ -169,29 +169,8 @@ main {
   border: none;
   display: block;
   cursor: pointer;
-}
-
-#user-table {
-  width: 100%;
-  font-weight: bold;
-  font-size: 1.5em;
-}
-#user-table td {
-  padding: 0.5em;
-  /* cursor: pointer; */
-}
-
-#user-table > tbody > tr > td {
-  background-color: var(--brand-1);
-  color: var(--brand-3);
-}
-#user-table > tbody > tr > td:first-child {
-  background-color: var(--brand-2);
-  color: var(--brand-1);
-}
-
-#user-table > thead > tr {
-  background-color: var(--brand-3) !important;
+  width: 80%;
+  /* display: inline; */
 }
 
 #reservation-table {

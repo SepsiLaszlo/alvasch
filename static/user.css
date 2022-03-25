@@ -1,0 +1,66 @@
+form {
+  padding-left: 0;
+  font-size: 2em;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 0.5em;
+}
+
+input,
+select {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: block;
+  width: 100%;
+  font-size: 1.2em;
+}
+
+label {
+  flex-basis: 300px;
+  padding: 0.5em;
+  background-color: var(--brand-2);
+}
+input[type="submit"] {
+  background-color: var(--brand-1);
+  color: var(--brand-3);
+  border: none;
+}
+
+
+
+
+#user-table {
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+#user-table td {
+  padding: 0.5em;
+  /* cursor: pointer; */
+}
+
+#user-table > tbody > tr > td {
+  background-color: var(--brand-1);
+  color: var(--brand-3);
+}
+#user-table > tbody > tr:last-child {
+  background-color: var(--brand-2);
+  color: var(--brand-2);
+}
+
+#user-table > thead > tr {
+  background-color: var(--brand-3) !important;
+}
+
+#user-table > tbody > tr > td:first-child {
+  background-color: var(--brand-2);
+  color: var(--brand-1);
+}
+
+#user-table a {
+  padding: initial;
+  font-size: inherit;
+  color: var(--brand-2);
+}

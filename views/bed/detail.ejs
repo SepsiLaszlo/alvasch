@@ -1,0 +1,26 @@
+<%- include("../header") %>
+
+<h1>Ágy adatok</h1>
+<form action="/bed">
+  <div class="row">
+    <label for="room">Szoba szám:</label>
+    <input type="text" id="room" name="room" value="1316" />
+  </div>
+  <div class="row">
+    <label for="user">Ágy helye:</label>
+    <select type="text" id="lname" name="lname">
+      <option value="right-top">Jobb felső</option>
+      <option value="right-bottom">Jobb alsó</option>
+      <option value="left-top">Bal felső</option>
+      <option value="left-bottom">Bal alsó</option>
+    </select>
+  </div>
+  <div class="row">
+    <label for="user">Tulajdonos:</label><br />
+    <input type="text" id="lname" name="lname" value="Fogadó Ferenc" />
+  </div>
+
+  <input type="submit" value="Mentés" />
+</form>
+
+<%- include("../footer") %>

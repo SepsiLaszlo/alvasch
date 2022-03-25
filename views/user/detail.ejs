@@ -1,0 +1,18 @@
+<%- include("../header") %>
+
+<h1>Felhasználó adatok</h1>
+<form action="/user">
+  <div class="row">
+    <label for="user">Név:</label><br />
+    <input type="text" id="lname" name="lname" value="Fogadó Ferenc" />
+  </div>
+
+  <div class="row">
+    <label for="room">Szoba szám:</label>
+    <input type="text" id="room" name="room" value="1316" />
+  </div>
+
+  <input type="submit" value="Mentés" />
+</form>
+
+<%- include("../footer") %>

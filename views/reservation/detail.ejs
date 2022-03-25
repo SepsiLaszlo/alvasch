@@ -1,0 +1,33 @@
+<%- include("../header") %>
+
+<h1>Felhasználó adatok</h1>
+<form action="/reservation">
+  <div class="row">
+    <label for="room">Szoba</label><br />
+    <input type="text" id="lname" name="lname" value="1316" />
+  </div>
+
+  <div class="row">
+    <label for="bed">Ágy</label>
+    <input type="bed" id="bde" name="room" value="bal alsó" />
+  </div>
+
+  <div class="row">
+    <label for="bed">Tulajdonos</label>
+    <input type="bed" id="bde" name="room" value="Fogadó Ferenc" />
+  </div>
+
+  <div class="row">
+    <label for="bed">Foglalás kezdete</label>
+    <input id="bde" name="room" type="datetime-local" />
+  </div>
+
+  <div class="row">
+    <label for="bed">Foglalás vége</label>
+    <input id="bde" name="room" type="datetime-local" />
+  </div>
+
+  <input type="submit" value="Mentés" />
+</form>
+
+<%- include("../footer") %>

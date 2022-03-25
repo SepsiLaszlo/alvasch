@@ -1,3 +1,4 @@
+const { set } = require('express/lib/application');
 const setVariables = require('./middlewares/setVariables');
 
 require('./middlewares/setVariables')
@@ -9,20 +10,23 @@ module.exports = function (app) {
     res.render("bed/index", res.variables);
   });
 
-  app.get("/bed/:id", function (req, res, next) {
-    const resource = req.path.split("/")[1]
-    res.render("beds/details", {});
+  app.get("/bed/:id",setVariables, function (req, res, next) {
+    res.render("bed/detail", res.variables);
   });
 
-  app.get("/user", function (req, res, next) {
-    res.render("user", {});
+  app.get("/user", setVariables ,function (req, res, next) {
+    res.render("user/index", res.variables);
   });
 
-  app.get("/reservation", function (req, res, next) {
-    res.render("reservations", {});
+  app.get("/user/:id", setVariables ,function (req, res, next) {
+    res.render("user/detail", res.variables);
   });
 
-  app.get("/reservation/:id", function (req, res, next) {
-    res.render("reservation", {});
+  app.get("/reservation", setVariables,function (req, res, next) {
+    res.render("reservation/index", res.variables);
+  });
+
+  app.get("/reservation/:id",setVariables, function (req, res, next) {
+    res.render("reservation/detail", res.variables);
   });
 };
