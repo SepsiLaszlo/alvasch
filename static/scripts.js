@@ -15,6 +15,7 @@ function main(){
 
 function toggleDisplay(element){
     element.classList.toggle("hidden")
+    document.body.classList.toggle("frozen")
 }
 
 
