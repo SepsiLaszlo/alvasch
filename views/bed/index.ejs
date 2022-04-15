@@ -1,35 +1,16 @@
 <%- include("../header") %>
+
+<!-- <%- beds %> -->
 <h1>Ágyak</h1>
 <div class="bed-grid">
+
+  <% beds.forEach(bed => {  %>
   <div class="card">
-    <h3>1316 - bal alsó</h3>
-    <p>tulajdonos: Fogadó Ferenc</p>
-    <a href="/bed/1">Foglalás</a>
+    <h3><%= bed.Position() %></h3>
+    <p>tulajdonos: <%= bed.user.name %></p>
+    <a href="/bed/<%= bed._id%>">Foglalás</a>
   </div>
-  <div class="card">
-    <h3>1315 - bal felső</h3>
-    <p>tulajdonos: Ágy Áron</p>
-    <a href="/bed/1">Foglalás</a>
-  </div>
-  <div class="card">
-    <h3>1314 - jobb alsó</h3>
-    <p>tulajdonos: Alsvó Aladár</p>
-    <a href="/bed/1">Foglalás</a>
-  </div>
-  <div class="card">
-    <h3>1313 - jobb alsó</h3>
-    <p>tulajdonos: Szundi Szilárd</p>
-    <a href="/bed/1">Foglalás</a>
-  </div>
-  <div class="card">
-    <h3>1312 - bal alsó</h3>
-    <p>tulajdonos: Takaró Tivadar</p>
-    <a href="/bed/1">Foglalás</a>
-  </div>
-  <div class="card">
-    <h3>1311 - bal alsó</h3>
-    <p>tulajdonos: Párna Péter</p>
-    <a href="/bed/1">Foglalás</a>
-  </div>
+  <% }) %>
+  
 </div>
 <%- include("../footer") %>

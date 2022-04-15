@@ -1,26 +1,27 @@
 <%- include("../header") %>
-
+<!-- <%= bed %> -->
 <h1>Ágy adatok</h1>
 <form action="/bed">
   <div class="row">
     <label for="room">Szoba szám:</label>
-    <input type="text" id="room" name="room" value="1316" />
+    <input type="text" id="room" name="room" value="<%= bed.room %>" />
   </div>
   <div class="row">
     <label for="user">Ágy helye:</label>
     <select type="text" id="lname" name="lname">
-      <option value="right-top">Jobb felső</option>
-      <option value="right-bottom">Jobb alsó</option>
-      <option value="left-top">Bal felső</option>
-      <option value="left-bottom">Bal alsó</option>
+      <option value="right-top" <% if(bed.position == 'right-top'){ %> selected <%}%> >Jobb felső</option>
+      <option value="right-bottom" <% if(bed.position == 'right-bottom'){ %> selected <%}%>>Jobb alsó</option>
+      <option value="left-top" <% if(bed.position == 'left-top'){ %> selected <%}%> >Bal felső</option>
+      <option value="left-bottom" <% if(bed.position == 'left-bottom'){ %> selected <%}%> >Bal alsó</option>
     </select>
   </div>
   <div class="row">
     <label for="user">Tulajdonos:</label><br />
-    <input type="text" id="lname" name="lname" value="Fogadó Ferenc" />
+    <input type="text" id="lname" name="lname" value="<%= bed.user.name %>" />
   </div>
 
   <input type="submit" value="Mentés" />
 </form>
 
 <%- include("../footer") %>
+
