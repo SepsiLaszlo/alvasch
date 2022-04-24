@@ -9,12 +9,20 @@ form {
 }
 
 input,
-select {
+select,a {
   flex-grow: 1;
   flex-shrink: 1;
   display: block;
   width: 100%;
   font-size: 1.2em;
+}
+
+form a {
+  text-align: start;
+  margin: initial;
+  justify-content: center;
+  padding: 0.1em;
+  text-decoration: underline;
 }
 
 label {
@@ -30,6 +38,7 @@ input[type="submit"] {
 
 .card {
   position: relative;
+  z-index: -1;
 }
 .card .delete-btn {
   position: absolute;

@@ -17,7 +17,8 @@
   </div>
   <div class="row">
     <label for="owner">Tulajdonos:</label><br />
-    <input type="text" id="owner" name="owner" value="<%= bed.user.name %>" />
+    <a href="/user/<%= bed.user._id %>"><%= bed.user.name %></a>
+    <!-- <input type="text" id="owner" name="owner" value="<%= bed.user.name %>" disabled /> -->
   </div>
 
   <input type="submit" value="Mentés" />
