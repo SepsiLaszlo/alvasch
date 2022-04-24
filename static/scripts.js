@@ -19,3 +19,24 @@ function toggleDisplay(element){
 }
 
 
+function deleteBed(id){
+    fetch(`/bed/${id}`, {
+        method: 'delete'
+      }).then(function(response) {
+          if(response.ok){
+            document.getElementById(`bed-${id}`).remove()
+          }
+        return response.json();
+      });
+}
+
+function deleteUser(id){
+  fetch(`/user/${id}`, {
+      method: 'delete'
+    }).then(function(response) {
+        if(response.ok){
+          document.getElementById(`user-${id}`).remove()
+        }
+      return response.json();
+    });
+}

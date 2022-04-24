@@ -1,33 +1,35 @@
 <%- include("../header") %>
 
 <h1>Felhasználó adatok</h1>
-<form action="/reservation">
+<form action="/reservation/<%= reservation._id %>" method="post">
   <div class="row">
     <label for="room">Szoba</label><br />
-    <input type="text" id="lname" name="lname" value="1316" />
+    <input type="text" id="lname" name="lname" value="<%= reservation.bed.room %>" disabled/>
   </div>
 
   <div class="row">
     <label for="bed">Ágy</label>
-    <input type="bed" id="bde" name="room" value="bal alsó" />
+    <input type="bed" id="bde" name="room" value="<%= reservation.bed.Position() %>" disabled/>
   </div>
 
   <div class="row">
     <label for="bed">Tulajdonos</label>
-    <input type="bed" id="bde" name="room" value="Fogadó Ferenc" />
+    <input type="bed" id="bde" name="room" value="<%= reservation.bed.Position() %>" disabled/>
   </div>
 
   <div class="row">
-    <label for="bed">Foglalás kezdete</label>
-    <input id="bde" name="room" type="datetime-local" />
+    <label for="start">Foglalás kezdete</label>
+    <input id="start" name="start" type="datetime-local" value="<%= reservation.start %>"/>
   </div>
 
   <div class="row">
-    <label for="bed">Foglalás vége</label>
-    <input id="bde" name="room" type="datetime-local" />
+    <label for="end">Foglalás vége</label>
+    <input id="end" name="end" type="datetime-local" value="<%= reservation.end %>" />
   </div>
 
-  <input type="submit" value="Mentés" />
+  <input type="submit" value="Frissítés" />
+  
 </form>
 
+<a href="/reservation/<%= reservation._id %>/delete">Lemondás</a>
 <%- include("../footer") %>

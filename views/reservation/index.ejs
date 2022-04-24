@@ -13,22 +13,16 @@
       </tr>
     </thead>
     <tbody>
+      <% reservations.forEach( reservation => { %>
       <tr>
-        <td>1316</td>
-        <td>bal alsó</td>
-        <td>Fogaló Félix</td>
-        <td>2022.02.27 - 20:00</td>
-        <td>2022.02.28 - 8:00</td>
-        <td><a href="/reservation/3">Részletek</a></td>
+        <td><%= reservation.bed.room %></td>
+        <td><%= reservation.bed.Position() %></td>
+        <td><%= reservation.user.name %></td>
+        <td><%= reservation.start %></td>
+        <td><%= reservation.end %></td>
+        <td><a href="/reservation/<%= reservation._id %>">Részletek</a></td>
       </tr>
-      <tr>
-        <td>1314</td>
-        <td>jobb alsó</td>
-        <td>Vendég Vikror</td>
-        <td>2022.02.28 - 23:59</td>
-        <td>2022.02.29 - 12:00</td>
-        <td><a href="/reservation/4">Részletek</a></td>
-      </tr>
+      <% }) %>
     </tbody>
   </table>
 </div>

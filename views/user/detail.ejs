@@ -1,15 +1,15 @@
 <%- include("../header") %>
 
 <h1>Felhasználó adatok</h1>
-<form action="/user">
+<form action="/user/<%= user.id %>" method="post">
   <div class="row">
-    <label for="user">Név:</label><br />
-    <input type="text" id="lname" name="lname" value="Fogadó Ferenc" />
+    <label for="name">Név:</label><br />
+    <input type="text" id="name" name="name" value="<%= user.name %>" />
   </div>
 
   <div class="row">
     <label for="room">Szoba szám:</label>
-    <input type="text" id="room" name="room" value="1316" />
+    <input type="text" id="room" name="room" value="<%= user.room %>" />
   </div>
 
   <input type="submit" value="Mentés" />

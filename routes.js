@@ -2,6 +2,7 @@ const { set } = require("express/lib/application");
 const setVariables = require("./middlewares/setVariables");
 const render = require("./middlewares/render");
 const redirect = require("./middlewares/redirect");
+const ok = require("./middlewares/ok");
 
 const getBed = require("./middlewares/bed/get");
 const getAllBed = require("./middlewares/bed/getAll");
@@ -24,7 +25,7 @@ const Reservation = require("./models/reservation");
 
 module.exports = function (app) {
   const objRepo = {
-    Use: User,
+    User: User,
     Bed: Bed,
     Reservation: Reservation,
   };
@@ -32,36 +33,36 @@ module.exports = function (app) {
   app.get("/", redirect("/bed"));
 
   app.get("/bed", getAllBed(objRepo), setVariables, render("bed/index"));
-  app.post("/bed", saveBed, setVariables, redirect("/bed"));
+  app.post("/bed/:id",  getBed(objRepo),saveBed(objRepo), setVariables, redirect("/bed"));
   app.get("/bed/:id", getBed(objRepo), setVariables, render("bed/detail"));
-  app.delete("/bed/:id", deleteBed, setVariables, redirect("/bed"));
+  app.delete("/bed/:id", getBed(objRepo), deleteBed(objRepo),ok);
 
-  app.get("/user", getAllUser, setVariables, render("user/index"));
-  app.post("/user", saveUser, setVariables, redirect("/user"));
-  app.get("/user/:id", getUser, setVariables, render("user/detail"));
-  app.delete("/user/:id", deleteUser, setVariables, redirect("/user"));
+  app.get("/user", getAllUser(objRepo), setVariables, render("user/index"));
+  app.post("/user/:id", getUser(objRepo), saveUser(objRepo), setVariables, redirect("/user"));
+  app.get("/user/:id", getUser(objRepo), setVariables, render("user/detail"));
+  app.delete("/user/:id", getUser(objRepo),   deleteUser(objRepo), ok);
 
   app.get(
     "/reservation",
-    getAllReservation,
+    getAllReservation(objRepo),
     setVariables,
     render("reservation/index")
   );
   app.post(
-    "/reservation",
-    saveReservation,
-    setVariables,
-    redirect("/reservation")
+    "/reservation/:id",
+    getReservation(objRepo),
+    saveReservation(objRepo),
   );
   app.get(
     "/reservation/:id",
-    getReservation,
+    getReservation(objRepo),
     setVariables,
     render("reservation/detail")
   );
-  app.delete(
-    "/reservation/:id",
-    deleteReservation,
+  app.get(
+    "/reservation/:id/delete",
+    getReservation(objRepo),
+    deleteReservation(objRepo),
     setVariables,
     redirect("/reservation")
   );

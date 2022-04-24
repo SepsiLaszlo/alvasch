@@ -13,7 +13,6 @@ module.exports = function (){
     newBed1.room =1316;
     newBed1.position = "left-top"
     newBed1.user = newUser1;
-
     newUser1.bed = newBed1;
 
 
@@ -29,8 +28,8 @@ module.exports = function (){
     newUser2.bed = newBed2;
 
     let newReservation = new Reservation();
-    newReservation.start = "2022.02.16 - 20:00"
-    newReservation.end = "2022.02.17 - 10:00"
+    newReservation.start = "2018-01-18T09:30"
+    newReservation.end = "2018-01-22T12:45"
     newReservation.bed = newBed1;
     newReservation.user = newUser2;
 
@@ -39,5 +38,7 @@ module.exports = function (){
     newUser2.save()
     newBed2.save()
     newReservation.save()
+
+    console.log("Seeds are loaded successfully!")
 
 }

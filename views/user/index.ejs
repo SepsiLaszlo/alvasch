@@ -6,29 +6,19 @@
       <td>Név</td>
       <td>Saját ágy</td>
       <td></td>
+      <td></td>
+
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Fogadó Ferenc</td>
-      <td>1316 - bal alsó</td>
-      <td><a href="/user/1">szerkeszt</a></td>
+    <% users.forEach(user =>{ %>
+    <tr id="user-<%= user._id %>">
+      <td><%= user.name%></td>
+      <td><%= user.bed.Position() %></td>
+      <td><a href="/user/<%= user._id%>">szerkeszt</a></td>
+      <td><span class="close-btn" onclick="deleteUser('<%= user._id%>')">X</span></td>
     </tr>
-    <tr>
-      <td>Ágy Áron</td>
-      <td>1315 - bal felő</td>
-      <td><a href="/user/1">szerkeszt</a></td>
-    </tr>
-    <tr>
-      <td>Alvó Aladár</td>
-      <td>1314 - jobb felső</td>
-      <td><a href="/user/1">szerkeszt</a></td>
-    </tr>
-    <tr>
-      <td>Szundi Szilárd</td>
-      <td>1313 - jobb alsó</td>
-      <td><a href="/user/1">szerkeszt</a></td>
-    </tr>
+    <% }) %>
   </tbody>
 </table>
 <%- include("../footer") %>

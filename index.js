@@ -1,8 +1,12 @@
 var express = require("express");
 const path = require("path");
+const bodyParser = require('body-parser');
+
 
 var app = express();
 app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded());
+app.use(bodyParser.json());
 app.use("/static", express.static("static"));
 
 require("./routes")(app)

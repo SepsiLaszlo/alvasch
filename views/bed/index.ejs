@@ -5,8 +5,9 @@
 <div class="bed-grid">
 
   <% beds.forEach(bed => {  %>
-  <div class="card">
+  <div id="bed-<%= bed._id %>" class="card">
     <h3><%= bed.Position() %></h3>
+    <span class="delete-btn" onclick="deleteBed('<%= bed._id %>')">X</span>
     <p>tulajdonos: <%= bed.user.name %></p>
     <a href="/bed/<%= bed._id%>">Foglalás</a>
   </div>
