@@ -8,6 +8,8 @@ const getBed = require("./middlewares/bed/get");
 const getAllBed = require("./middlewares/bed/getAll");
 const saveBed = require("./middlewares/bed/save");
 const deleteBed = require("./middlewares/bed/delete");
+const newBed = require("./middlewares/bed/new");
+
 
 const getUser = require("./middlewares/user/get");
 const getAllUser = require("./middlewares/user/getAll");
@@ -33,9 +35,12 @@ module.exports = function (app) {
   app.get("/", redirect("/bed"));
 
   app.get("/bed", getAllBed(objRepo), setVariables, render("bed/index"));
+  app.get("/bed/new", getAllUser(objRepo), setVariables, render("bed/detail"));
+  app.post("/bed/",newBed(objRepo), saveBed(objRepo), setVariables, redirect("/bed"));
   app.post("/bed/:id",  getBed(objRepo),saveBed(objRepo), setVariables, redirect("/bed"));
   app.get("/bed/:id", getBed(objRepo), setVariables, render("bed/detail"));
   app.delete("/bed/:id", getBed(objRepo), deleteBed(objRepo),ok);
+
 
   app.get("/user", getAllUser(objRepo), setVariables, render("user/index"));
   app.post("/user/:id", getUser(objRepo), saveUser(objRepo), setVariables, redirect("/user"));
@@ -66,4 +71,14 @@ module.exports = function (app) {
     setVariables,
     redirect("/reservation")
   );
+
+  app.post(
+    "/reservation/:id/create",
+    saveReservation(objRepo),
+    setVariables,
+    redirect("/reservation")
+  );
+
+  app.get("/reservation/:id/new", getBed(objRepo),getAllBed(objRepo), getAllUser(objRepo), setVariables, render("reservation/detail"),ok);
+
 };

@@ -3,13 +3,26 @@ const requireOption = require('../requireOption');
 
  module.exports = function(objectrepository) {
      const Reservation = requireOption(objectrepository, 'Reservation');
+     const Bed = requireOption(objectrepository, 'Bed');
+     const User = requireOption(objectrepository, 'User');
+
  
-     return function(req, res, next) {         
+     return async function(req, res, next) {         
         if (
              typeof req.body.start === 'undefined' ||
              typeof req.body.end === 'undefined'
          ) {
              return next();
+         }
+
+         if( typeof res.locals.bed !== undefined) {
+             res.locals.reservation = new Reservation();
+             bed = await Bed.findById(req.body.bed)
+             user = await User.findById(req.body.user)
+
+
+             res.locals.reservation.bed = bed;
+             res.locals.reservation.user = user;
          }
  
  

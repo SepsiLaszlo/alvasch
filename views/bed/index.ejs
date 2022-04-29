@@ -1,17 +1,20 @@
 <%- include("../header") %>
 
-<!-- <%- beds %> -->
-<h1>Ágyak</h1>
-<div class="bed-grid">
+<div class="header">
+  <h1>Ágyak</h1>
+  <a id="new-bed-btn" href="/bed/new">Új ágy</a>
+</div>
 
-  <% beds.forEach(bed => {  %>
+<div class="bed-grid">
+  <% beds.forEach(bed => { %>
   <div id="bed-<%= bed._id %>" class="card">
     <h3><%= bed.Position() %></h3>
     <span class="delete-btn" onclick="deleteBed('<%= bed._id %>')">X</span>
+
     <p>tulajdonos: <%= bed.user.name %></p>
-    <a href="/bed/<%= bed._id%>">Foglalás</a>
+    <a href="/reservation/<%= bed._id%>/new">Foglalás</a>
+    <a href="/bed/<%= bed._id%>">Részletek</a>
   </div>
   <% }) %>
-  
 </div>
 <%- include("../footer") %>

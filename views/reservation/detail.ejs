@@ -1,35 +1,53 @@
 <%- include("../header") %>
 
 <h1>Felhasználó adatok</h1>
-<form action="/reservation/<%= reservation._id %>" method="post">
+<form action="/reservation/<%= (typeof reservation !== 'undefined') ? reservation._id : bed.id+'/create'%>" method="post">
   <div class="row">
     <label for="room">Szoba</label><br />
-    <input type="text" id="lname" name="lname" value="<%= reservation.bed.room %>" disabled/>
+    <input type="text" id="lname" name="lname" value="<%= (typeof reservation !== 'undefined') ? reservation.bed.room : bed.room %>" disabled/>
   </div>
 
   <div class="row">
     <label for="bed">Ágy</label>
-    <input type="bed" id="bde" name="room" value="<%= reservation.bed.Position() %>" disabled/>
+    <% if(typeof reservation !== 'undefined') {%>
+      <input id="bed" name="bed" value="<%= reservation.bed.Position() %>" disabled/>
+      <% } else { %>
+        <input id="bedv" name="bedv" value="<%= bed.Position() %>" disabled/>
+        <input type="hidden" name="bed" value="<%= bed._id %>"/>
+    <% }%> 
   </div>
 
   <div class="row">
-    <label for="bed">Tulajdonos</label>
-    <input type="bed" id="bde" name="room" value="<%= reservation.bed.Position() %>" disabled/>
+    <label for="user">Foglaló</label>
+
+    <% if(typeof reservation !== 'undefined') {%>
+      <input id="user" name="user" value="<%= reservation.user.name %>" disabled/>
+      <% } else { %>
+        <select type="text" id="user" name="user">
+          <% users.forEach( user => { %>
+        
+            <option value="<%= user._id %>">
+              <%= user.name %>
+            </option>
+          <% }) %>
+        </select>
+    <% }%> 
   </div>
 
   <div class="row">
     <label for="start">Foglalás kezdete</label>
-    <input id="start" name="start" type="datetime-local" value="<%= reservation.start %>"/>
+    <input id="start" name="start" type="datetime-local" value="<%= (typeof reservation !== 'undefined') ? reservation.start : '' %>"/>
   </div>
 
   <div class="row">
     <label for="end">Foglalás vége</label>
-    <input id="end" name="end" type="datetime-local" value="<%= reservation.end %>" />
+    <input id="end" name="end" type="datetime-local" value="<%= (typeof reservation !== 'undefined') ? reservation.end : '' %>" />
   </div>
 
-  <input type="submit" value="Frissítés" />
+  <input type="submit" value="<%= (typeof reservation !== 'undefined') ? 'Frissítés' : 'Foglalás' %>" />
   
 </form>
-
-<a href="/reservation/<%= reservation._id %>/delete">Lemondás</a>
+<% if(typeof reservation !== 'undefined'){%>
+<a href="/reservation/<%= (typeof reservation !== 'undefined') ? reservation._id : '' %>/delete">Lemondás</a>
+<% } %>
 <%- include("../footer") %>

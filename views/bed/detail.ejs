@@ -1,24 +1,33 @@
 <%- include("../header") %>
-<!-- <%= bed %> -->
 <h1>Ágy adatok</h1>
-<form action="/bed/<%= bed._id %>" method="post">
+<form action="/bed/<%= (typeof bed ==='undefined') ? '': bed._id %>" method="post">
   <div class="row">
     <label for="room">Szoba szám:</label>
-    <input type="text" id="room" name="room" value="<%= bed.room %>" />
+    <input type="text" id="room" name="room" value="<%= (typeof bed ==='undefined') ?'' : bed.room %>" />
   </div>
   <div class="row">
     <label for="position">Ágy helye:</label>
     <select type="text" id="position" name="position">
-      <option value="right-top" <% if(bed.position == 'right-top'){ %> selected <%}%> >Jobb felső</option>
-      <option value="right-bottom" <% if(bed.position == 'right-bottom'){ %> selected <%}%>>Jobb alsó</option>
-      <option value="left-top" <% if(bed.position == 'left-top'){ %> selected <%}%> >Bal felső</option>
-      <option value="left-bottom" <% if(bed.position == 'left-bottom'){ %> selected <%}%> >Bal alsó</option>
+      <option value="right-top" <% if( (typeof bed !=='undefined') && bed.position == 'right-top'){ %> selected <%}%> >Jobb felső</option>
+      <option value="right-bottom" <% if(  (typeof bed !=='undefined') && bed.position == 'right-bottom'){ %> selected <%}%>>Jobb alsó</option>
+      <option value="left-top" <% if(  (typeof bed !=='undefined') && bed.position == 'left-top'){ %> selected <%}%> >Bal felső</option>
+      <option value="left-bottom" <% if(  (typeof bed !=='undefined') && bed.position == 'left-bottom'){ %> selected <%}%> >Bal alsó</option>
     </select>
   </div>
   <div class="row">
-    <label for="owner">Tulajdonos:</label><br />
-    <a href="/user/<%= bed.user._id %>"><%= bed.user.name %></a>
-    <!-- <input type="text" id="owner" name="owner" value="<%= bed.user.name %>" disabled /> -->
+    <label for="user">Tulajdonos:</label><br />
+    <% if(typeof bed !== 'undefined' ) {%>
+      <a href="/user/<%= bed.user._id %>"><%= bed.user.name %></a>
+      <% } else { %>
+        <select type="text" id="user" name="user">
+          <% users.forEach( user => { %>
+        
+            <option value="<%= user._id %>">
+              <%= user.name %>
+            </option>
+          <% }) %>
+        </select>
+    <% }%> 
   </div>
 
   <input type="submit" value="Mentés" />
