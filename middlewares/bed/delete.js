@@ -3,7 +3,8 @@
  const requireOption = require('../requireOption');
 
  module.exports = function(objectrepository) {
-     return function(req, res, next) {
+    const Reservation = requireOption(objectrepository, 'Reservation');
+    return function(req, res, next) {
          if (typeof res.locals.bed === 'undefined') {
              return next();
          }
@@ -12,12 +13,11 @@
              if (err) {
                  return next(err);
              }
-             res.locals.bed.user.remove(err => {
+             Reservation.deleteMany({ bed: res.locals.bed},err => {
                 if (err) {
                     return next(err);
-                }
-                return next();
-             })
+                } });
+             
          });
      };
  };
