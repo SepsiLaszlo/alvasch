@@ -4,17 +4,17 @@
 <form action="/reservation/<%= reservation._id %>" method="post">
   <div class="row">
     <label for="room">Szoba</label><br />
-    <input type="text" id="lname" name="lname" value="<%= reservation.bed.room %>" disabled/>
+    <input type="text" id="lname" name="lname" value="<%= reservation.bed !== null ? reservation.bed.room : '' %>" disabled/>
   </div>
 
   <div class="row">
     <label for="bed">Ágy</label>
-      <input id="bed" name="bed" value="<%= reservation.bed.Position() %>" disabled/>
+      <input id="bed" name="bed" value="<%= reservation.bed !== null ? reservation.bed.Position() : '' %>" disabled/>
   </div>
 
   <div class="row">
     <label for="user">Foglaló</label>
-      <input id="user" name="user" value="<%= reservation.user.name %>" disabled/>
+      <input id="user" name="user" value="<%= reservation.user !== null ? reservation.user.name : '' %>" disabled/>
   </div>
 
   <div class="row">

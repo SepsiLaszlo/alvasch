@@ -15,9 +15,9 @@
     <tbody>
       <% reservations.forEach( reservation => { %>
       <tr>
-        <td><%= reservation.bed.room %></td>
-        <td><%= reservation.bed.Position() %></td>
-        <td><%= reservation.user.name %></td>
+        <td><%= reservation.bed !== null ? reservation.bed.room : ''%></td>
+        <td><%= reservation.bed !== null ? reservation.bed.Position() : '' %></td>
+        <td><%= reservation.user !== null ? reservation.user.name : '' %></td>
         <td><%= reservation.start %></td>
         <td><%= reservation.end %></td>
         <td><a href="/reservation/<%= reservation._id %>">Részletek</a></td>
