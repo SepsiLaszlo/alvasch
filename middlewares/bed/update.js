@@ -14,20 +14,14 @@ const requireOption = require('../requireOption');
      return async function(req, res, next) {
         if (
              typeof req.body.room === 'undefined' ||
-             typeof req.body.position === 'undefined'||
-             typeof req.body.user === 'undefined'
+             typeof req.body.position === 'undefined'
          ) {
              return next();
          }
  
          res.locals.bed.room = req.body.room;
          res.locals.bed.position = req.body.position; 
-         if (typeof req.body.user !== 'undefined'){
-            res.locals.bed.user = await User.findById(req.body.user)
-         }
-
         
- 
          res.locals.bed.save(err => {
              if (err) {
                  return next(err);

@@ -1,0 +1,33 @@
+<%- include("../header") %>
+<h1>Ágy adatok</h1>
+<form action="/bed" method="post">
+  <div class="row">
+    <label for="room">Szoba szám:</label>
+    <input type="text" id="room" name="room" value="" />
+  </div>
+  <div class="row">
+    <label for="position">Ágy helye:</label>
+    <select type="text" id="position" name="position">
+      <option value="right-top">Jobb felső</option>
+      <option value="right-bottom">Jobb alsó</option>
+      <option value="left-top">Bal felső</option>
+      <option value="left-bottom">Bal alsó</option>
+    </select>
+  </div>
+  <div class="row">
+    <label for="user">Tulajdonos:</label><br />
+        <select type="text" id="user" name="user">
+          <% users.forEach( user => { %>
+        
+            <option value="<%= user._id %>">
+              <%= user.name %>
+            </option>
+          <% }) %>
+        </select>
+  </div>
+
+  <input type="submit" value="Mentés" />
+</form>
+
+<%- include("../footer") %>
+

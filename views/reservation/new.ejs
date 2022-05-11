@@ -1,0 +1,41 @@
+<%- include("../header") %>
+
+<h1>Felhasználó adatok</h1>
+<form action="/reservation/<%= bed._id+'/create'%>" method="post">
+  <div class="row">
+    <label for="room">Szoba</label><br />
+    <input type="text" id="lname" name="lname" value="<%= bed.room %>" disabled/>
+  </div>
+
+  <div class="row">
+    <label for="bed">Ágy</label>
+        <input id="bedv" name="bedv" value="<%= bed.Position() %>" disabled/>
+        <input type="hidden" name="bed" value="<%= bed._id %>"/>
+  </div>
+
+  <div class="row">
+    <label for="user">Foglaló</label>
+        <select type="text" id="user" name="user">
+          <% users.forEach( user => { %>
+            <option value="<%= user._id %>">
+              <%= user.name %>
+            </option>
+          <% }) %>
+        </select>
+  </div>
+
+  <div class="row">
+    <label for="start">Foglalás kezdete</label>
+    <input id="start" name="start" type="datetime-local" value=""/>
+  </div>
+
+  <div class="row">
+    <label for="end">Foglalás vége</label>
+    <input id="end" name="end" type="datetime-local" value="" />
+  </div>
+
+  <input type="submit" value="Foglalás" />
+  
+</form>
+
+<%- include("../footer") %>

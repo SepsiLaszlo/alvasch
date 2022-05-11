@@ -14,7 +14,7 @@
     <% users.forEach(user =>{ %>
     <tr id="user-<%= user._id %>">
       <td><%= user.name%></td>
-      <td><%= user.bed.Position() %></td>
+      <td><%= typeof(user.bed) === undefined ? user.bed.Position() : "" %></td>
       <td><a href="/user/<%= user._id%>">szerkeszt</a></td>
       <td><span class="close-btn" onclick="deleteUser('<%= user._id%>')">X</span></td>
     </tr>

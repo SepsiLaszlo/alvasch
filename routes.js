@@ -9,6 +9,8 @@ const getAllBed = require("./middlewares/bed/getAll");
 const saveBed = require("./middlewares/bed/save");
 const deleteBed = require("./middlewares/bed/delete");
 const newBed = require("./middlewares/bed/new");
+const updateBed = require("./middlewares/bed/update");
+
 
 
 const getUser = require("./middlewares/user/get");
@@ -20,6 +22,7 @@ const getReservation = require("./middlewares/reservation/get");
 const getAllReservation = require("./middlewares/reservation/getAll");
 const saveReservation = require("./middlewares/reservation/save");
 const deleteReservation = require("./middlewares/reservation/delete");
+const updateReservation = require("./middlewares/reservation/update");
 
 const User = require("./models/user");
 const Bed = require("./models/bed");
@@ -35,9 +38,9 @@ module.exports = function (app) {
   app.get("/", redirect("/bed"));
 
   app.get("/bed", getAllBed(objRepo), setVariables, render("bed/index"));
-  app.get("/bed/new", getAllUser(objRepo), setVariables, render("bed/detail"));
+  app.get("/bed/new", getAllUser(objRepo), setVariables, render("bed/new"));
   app.post("/bed/",newBed(objRepo), saveBed(objRepo), setVariables, redirect("/bed"));
-  app.post("/bed/:id",  getBed(objRepo),saveBed(objRepo), setVariables, redirect("/bed"));
+  app.post("/bed/:id",  getBed(objRepo),updateBed(objRepo), setVariables, render("bed/detail"));
   app.get("/bed/:id", getBed(objRepo), setVariables, render("bed/detail"));
   app.delete("/bed/:id", getBed(objRepo), deleteBed(objRepo),ok);
 
@@ -45,7 +48,7 @@ module.exports = function (app) {
   app.get("/user", getAllUser(objRepo), setVariables, render("user/index"));
   app.post("/user/:id", getUser(objRepo), saveUser(objRepo), setVariables, redirect("/user"));
   app.get("/user/:id", getUser(objRepo), setVariables, render("user/detail"));
-  app.delete("/user/:id", getUser(objRepo),   deleteUser(objRepo), ok);
+  app.delete("/user/:id", getUser(objRepo), deleteUser(objRepo), ok);
 
   app.get(
     "/reservation",
@@ -56,7 +59,7 @@ module.exports = function (app) {
   app.post(
     "/reservation/:id",
     getReservation(objRepo),
-    saveReservation(objRepo),
+    updateReservation(objRepo),
   );
   app.get(
     "/reservation/:id",
@@ -79,6 +82,6 @@ module.exports = function (app) {
     redirect("/reservation")
   );
 
-  app.get("/reservation/:id/new", getBed(objRepo),getAllBed(objRepo), getAllUser(objRepo), setVariables, render("reservation/detail"),ok);
+  app.get("/reservation/:id/new", getBed(objRepo),getAllBed(objRepo), getAllUser(objRepo), setVariables, render("reservation/new"),ok);
 
 };

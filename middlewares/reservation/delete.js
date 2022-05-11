@@ -4,7 +4,7 @@ const requireOption = require('../requireOption');
 
 module.exports = function(objectrepository) {
     return function(req, res, next) {
-        if (typeof res.locals.reservation === 'undefined') {
+        if (typeof res.locals.reservation === 'undefined'|| res.locals.reservation === null) {
             return next();
         }
 
@@ -15,5 +15,6 @@ module.exports = function(objectrepository) {
            
                return next();
             })
+            
     };
 };

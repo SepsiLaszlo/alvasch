@@ -3,11 +3,17 @@ const Reservation = require('../models/reservation')
 const User = require('../models/user')
 
 
-module.exports = function (){
+module.exports = async function (){
+    userCount = await User.count()
+    reservationCount = await Reservation.count()
+    bedCount = await Bed.count()
+
+   if(userCount>0|| bedCount >0 || reservationCount >0) {return}
+   
+
     let newUser1 = new User()
     newUser1.name = "Tulaj Tamás";
     newUser1.room = 1316;
-    
 
     let newBed1 = new Bed();
     newBed1.room =1316;
