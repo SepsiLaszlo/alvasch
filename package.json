@@ -6,7 +6,11 @@
     "mongoose": "^6.3.0"
   },
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "test": "mocha",
+    "report": "nyc --reporter=html npm run test",
+    "coverage": "nyc npm run test"
+
   },
   "devDependencies": {
     "chai": "^4.3.6",

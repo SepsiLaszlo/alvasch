@@ -60,6 +60,7 @@ module.exports = function (app) {
     "/reservation/:id",
     getReservation(objRepo),
     updateReservation(objRepo),
+    function(req,res,next){ return res.redirect(`/reservation/${res.locals.reservation._id}`); }
   );
   app.get(
     "/reservation/:id",

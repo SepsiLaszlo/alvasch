@@ -6,7 +6,6 @@ const requireOption = require('../requireOption');
      const Bed = requireOption(objectrepository, 'Bed');
      const User = requireOption(objectrepository, 'User');
 
- 
      return async function(req, res, next) {         
         if (
              typeof req.body.start === 'undefined' ||
@@ -24,7 +23,7 @@ const requireOption = require('../requireOption');
                  return next(err);
              }
  
-             return res.redirect(`/reservation/${res.locals.reservation._id}`);
+              return next();
             });
      };
  };
