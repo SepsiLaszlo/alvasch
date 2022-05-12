@@ -4,6 +4,7 @@
 
  module.exports = function(objectrepository) {
     const Reservation = requireOption(objectrepository, 'Reservation');
+    
     return function(req, res, next) {
          if (typeof res.locals.bed === 'undefined') {
              return next();
@@ -16,7 +17,9 @@
              Reservation.deleteMany({ bed: res.locals.bed},err => {
                 if (err) {
                     return next(err);
-                } });
+                }
+                return next();
+            });
              
          });
      };

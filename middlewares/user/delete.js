@@ -11,6 +11,7 @@ const requireOption = require('../requireOption');
              if (err) {
                  return next(err);
              }
+             if(res.locals.user.bed === null) {return next()}
              res.locals.user.bed.remove(err => {
                 if (err) {
                     return next(err);
