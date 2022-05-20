@@ -87,7 +87,7 @@ describe('update reservation middleware ', function () {
       User: {}
     })(req, res, function (err) {
       expect(err).to.eql('hiba');
-      done();
+       done();
     });
   });
 
